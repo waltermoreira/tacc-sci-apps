@@ -1,3 +1,12 @@
 [submodule "bowtie-sci-app"]
 	path = bowtie-sci-app
 	url = git@github.com:waltermoreira/bowtie-sci-app.git
+[submodule "blast-sci-app"]
+	path = blast-sci-app
+	url = git@github.com:waltermoreira/blast-sci-app.git
+[submodule "base-sci-app"]
+	path = base-sci-app
+	url = git@github.com:waltermoreira/base-sci-app.git
+[submodule "bioperl-sci-app"]
+	path = bioperl-sci-app
+	url = git@github.com:waltermoreira/bioperl-sci-app.git
