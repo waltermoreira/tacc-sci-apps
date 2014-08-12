@@ -1,0 +1,3 @@
+[submodule "bowtie-sci-app"]
+	path = bowtie-sci-app
+	url = git@github.com:waltermoreira/bowtie-sci-app.git
