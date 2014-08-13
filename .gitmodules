@@ -12,4 +12,4 @@
 	url = git@github.com:waltermoreira/bioperl-sci-app.git
 [submodule "ipython-sci-app"]
 	path = ipython-sci-app
-	url = ./ipython-sci-app
+	url = git@github.com:waltermoreira/ipython-sci-app.git
