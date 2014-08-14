@@ -7,4 +7,5 @@ aniso8601==0.83
 itsdangerous==0.24
 pytz==2014.4
 six==1.7.3
+wheel==0.24.0
 wsgiref==0.1.2
