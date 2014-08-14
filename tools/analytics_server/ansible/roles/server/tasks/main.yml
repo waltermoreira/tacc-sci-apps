@@ -1,0 +1,10 @@
+---
+
+- name: Upload server wheel
+  copy:
+    src: server-{{ server_version }}-py2.py3-none-any.whl
+    dest: /tmp/
+
+- name: Install server wheel
+  pip: name="/tmp/server-{{ server_version }}-py2.py3-none-any.whl"
+  sudo: yes
