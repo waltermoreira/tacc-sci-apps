@@ -1,0 +1,30 @@
+---
+
+- name: Ensure Python and pip are installed in Centos
+  yum: name={{ item }} state=latest
+  sudo: yes
+  when: ansible_os_family == "RedHat"
+  with_items:
+    - python
+    - python-pip
+
+- name: Ensure Python and pip are installed in Debian
+  apt: name={{ item }} state=latest
+  sudo: yes
+  when: ansible_os_family == "Debian"
+  with_items:
+    - python
+    - python-pip
+
+- name: Ensure docker-py is installed
+  pip: name=docker-py state=latest
+  sudo: yes
+
+- name: Ensure mongodb container
+  docker:
+    image: mongo
+    detach: true
+    name: my-mongo
+    state: running
+  sudo: yes
+  sudo_user: "{{ docker_user }}"
