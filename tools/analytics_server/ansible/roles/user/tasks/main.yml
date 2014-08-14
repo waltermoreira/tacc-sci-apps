@@ -1,0 +1,21 @@
+---
+
+- debug: msg="user {{ the_user }}"
+
+- name: Create users
+  user: name={{ the_user }} state=present generate_ssh_key=yes
+  sudo: yes
+
+- name: Add user to sudoers with no password
+  lineinfile:
+    dest: /etc/sudoers.d/99-{{ the_user }}-user
+    line: '{{ the_user }} ALL=(ALL) NOPASSWD:ALL'
+    state: present
+    create: yes
+  sudo: yes
+
+- name: Ensure permissions on sudoers
+  file:
+    path: /etc/sudoers.d/99-{{ the_user }}-user
+    mode: 0440
+  sudo: yes

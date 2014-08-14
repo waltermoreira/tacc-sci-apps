@@ -1,0 +1,5 @@
+[group-1]
+# hostA ansible_ssh_user=user
+
+[group-2]
+# hostB

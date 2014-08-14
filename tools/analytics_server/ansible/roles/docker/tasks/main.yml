@@ -1,0 +1,18 @@
+---
+
+- include: debian.yml
+  when: ansible_os_family == "Debian"
+
+- include: redhat.yml
+  when: ansible_os_family == "RedHat"
+
+- name: Add user to docker group
+  user:
+    name: "{{ docker_user }}"
+    append: yes
+    groups: docker
+  sudo: yes
+
+- name: Ensure docker daemon is running
+  service: name=docker state=started
+  sudo: yes

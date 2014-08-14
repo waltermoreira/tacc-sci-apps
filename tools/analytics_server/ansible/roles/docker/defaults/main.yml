@@ -1,0 +1,4 @@
+---
+
+# The user who's going to use docker
+docker_user: docker
