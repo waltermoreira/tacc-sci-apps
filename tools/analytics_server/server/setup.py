@@ -39,6 +39,7 @@ setup(
     packages=[
         'server',
     ],
+    scripts=['bin/analytics_server.py'],
     package_dir={'server':
                  'server'},
     include_package_data=True,
