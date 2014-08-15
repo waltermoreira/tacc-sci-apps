@@ -1,0 +1,21 @@
+---
+
+- name: Copy tarball with Python 2.7
+  unarchive:
+    src: "python27.tgz"
+    dest: "/usr/local"
+    creates: /usr/local/python/bin/python2.7
+  sudo: yes
+
+- name: Get pip
+  get_url: url=https://bootstrap.pypa.io/get-pip.py dest=/tmp/get-pip.py
+  register: got_pip
+
+- name: Install pip
+  command: /usr/local/python/bin/python2.7 /tmp/get-pip.py --force-reinstall
+  sudo: yes
+  when: got_pip|changed
+
+- name: Set name of pip executable
+  set_fact:
+    pip_executable: /usr/local/python/bin/pip

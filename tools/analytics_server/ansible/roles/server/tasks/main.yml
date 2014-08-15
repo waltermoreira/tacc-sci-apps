@@ -4,7 +4,11 @@
   copy:
     src: server-{{ server_version }}-py2.py3-none-any.whl
     dest: /tmp/
+  register: wheel_uploaded
 
 - name: Install server wheel
-  pip: name="/tmp/server-{{ server_version }}-py2.py3-none-any.whl"
+  pip:
+    name: "/tmp/server-{{ server_version }}-py2.py3-none-any.whl"
+    executable: "{{ pip_executable }}"
   sudo: yes
+  when: wheel_uploaded|changed
