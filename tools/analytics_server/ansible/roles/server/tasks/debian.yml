@@ -1,0 +1,18 @@
+---
+
+- name: Install supervisor in Debian
+  apt: name=supervisor state=latest
+  sudo: yes
+  when: ansible_os_family == "Debian"
+
+- name: Set name of supervisor in Debian
+  set_fact:
+    supervisor_conf_dir: /etc/supervisor/conf.d
+    supervisor_conf_ext: conf
+    supervisor_service: supervisor
+    supervisor_ctl: /usr/bin/supervisorctl
+  when: ansible_os_family == 'Debian'
+
+- name: Make sure supervisor is running
+  service: name={{ supervisor_service }} state=started
+  sudo: yes

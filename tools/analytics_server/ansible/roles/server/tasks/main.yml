@@ -12,3 +12,28 @@
     executable: "{{ pip_executable }}"
   sudo: yes
   when: wheel_uploaded|changed
+
+- include: redhat.yml
+  when: ansible_os_family == "RedHat"
+
+- include: debian.yml
+  when: ansible_os_family == "Debian"
+
+- name: Set supervisor config for the server
+  template:
+    src: server.ini.j2
+    dest: "{{ supervisor_conf_dir }}/server.{{ supervisor_conf_ext }}"
+  register: server_config
+  sudo: yes
+
+- name: Ensure supervisor sees the config for server
+  shell: kill -HUP $(cat /var/run/supervisord.pid)
+  sudo: yes
+  when: server_config|changed
+
+- name: Make sure the analytics server is started
+  supervisorctl:
+    name: analytics_server
+    state: present
+    supervisorctl_path: "{{ supervisor_ctl }}"
+  sudo: yes

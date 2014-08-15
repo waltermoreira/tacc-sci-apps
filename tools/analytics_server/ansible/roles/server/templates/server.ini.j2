@@ -1,0 +1,8 @@
+[program:analytics_server]
+command="{{ exec_path }}/analytics_server.py"
+autostart=true
+autorestart=true
+stopsignal=KILL
+stopasgroup=true
+killasgroup=true
+

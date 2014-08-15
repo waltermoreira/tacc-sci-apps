@@ -15,6 +15,7 @@
 - name: Set name of default pip executable
   set_fact:
     pip_executable: "{{ default_pip.stdout }}"
+    exec_path: /usr/local/bin
 
 - include: my-python.yml
   when: python_version.stderr|match('Python 2.6\..*') and ansible_distribution == "CentOS"
