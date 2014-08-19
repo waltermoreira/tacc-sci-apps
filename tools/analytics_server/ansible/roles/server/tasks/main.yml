@@ -41,6 +41,6 @@
 - name: Make sure the analytics server is started
   supervisorctl:
     name: analytics_server
-    state: present
+    state: started
     supervisorctl_path: "{{ supervisor_ctl }}"
   sudo: yes
