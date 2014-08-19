@@ -26,6 +26,7 @@
     detach: true
     name: my-mongo
     state: running
+    ports: 27017:27017
   sudo: yes
   sudo_user: "{{ docker_user }}"
 
