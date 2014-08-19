@@ -31,6 +31,13 @@
   sudo: yes
   when: server_config|changed
 
+- name: Ensure pymongo is installed
+  pip:
+    name: pymongo
+    state: latest
+    executable: "{{ pip_executable }}"
+  sudo: yes
+
 - name: Make sure the analytics server is started
   supervisorctl:
     name: analytics_server

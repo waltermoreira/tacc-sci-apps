@@ -29,7 +29,3 @@
     ports: 27017:27017
   sudo: yes
   sudo_user: "{{ docker_user }}"
-
-- name: Ensure pymongo is installed
-  pip: name=pymongo state=latest
-  sudo: yes
