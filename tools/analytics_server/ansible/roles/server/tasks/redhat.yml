@@ -29,5 +29,8 @@
   ignore_errors: yes
   register: supervisor_pid
   changed_when: supervisor_pid|failed
-  notify:
-    - Start Redhat supervisor
+
+- name: Start Redhat supervisor if necessary
+  command: /usr/local/python/bin/supervisord -c /etc/supervisord.conf
+  sudo: yes
+  when: supervisor_pid|failed
